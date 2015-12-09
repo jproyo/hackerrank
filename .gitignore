@@ -1,0 +1,14 @@
+bin/
+.project
+.settings
+.classpath
+*.class
+target/
+classes/
+*.h2.db
+
+# Package Files #
+*.jar
+*.war
+*.ear
+Thumbs.db
