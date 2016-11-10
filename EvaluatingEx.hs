@@ -10,4 +10,4 @@ resolve x 1 = 1 + x
 resolve x i = ( (x^i) / (fromInteger (factorial i)) ) + (resolve x (i-1))
 
 main :: IO ()
-main = getContents >>= mapM_ print. map solve. map (read::String->Double). tail. words
+main = getContents >>= mapM_ print. map solve. map (read::String->Double). tail . words
