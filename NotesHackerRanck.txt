@@ -1,0 +1,81 @@
+static void counterGame(String[] tests) {
+  for (int i = 0; i < tests.length; i++) {
+    try {
+      Long number = Long.valueOf(tests[i]);
+      if(number != 1){
+        printWinner(number);
+      }
+    } catch (NumberFormatException e) {
+    }
+  }
+  }
+
+private static void printWinner(Long number) {
+  int counter = 0;
+  long numberToReduce = number;
+  while(numberToReduce >= 2){
+    if(Math.log(numberToReduce)%Math.log(2) == 0){
+      numberToReduce = numberToReduce/2;
+      if(numberToReduce == 1){
+        System.out.printf("%s", counter%2 == 0 ? "Louise" : "Richard");
+        break;
+      }
+    }else{
+      long reduce = (long)Math.pow(2, Math.floor(Math.log(numberToReduce) / Math.log(2)));
+      numberToReduce -= reduce;
+      counter++;
+    }
+  }
+}
+
+
+
+
+
+	public static void main(String[] args) {
+		try(Scanner s = new Scanner(System.in)) {
+			Solution sol = new Solution();
+			String lineAmountOperations = s.nextLine();
+			String[] split = lineAmountOperations.split("\\s");
+			int amount = Integer.valueOf(split[0]);
+			int operations = Integer.valueOf(split[1]);
+			int[] arrayAmounts = new int[amount];
+			int max = 0;
+			for (int i = 0; i < operations; i++) {
+				String lineOper = s.nextLine();
+				String[] splitOper = lineOper.split("\\s");
+				int begin = Integer.valueOf(splitOper[0]);
+				int end = Integer.valueOf(splitOper[1]);
+				int sum = Integer.valueOf(splitOper[2]);
+				max = sol.doOperation(arrayAmounts, begin-1, end-1, sum, max);
+			}
+			System.out.println(max);
+		}
+	}
+
+	private int doOperation(int[] amount, int begin, int end, int sum, int max) {
+		for (int i = begin; i <= end; i++) {
+			amount[i] += sum;
+			if(max < amount[i]){
+				max = amount[i];
+			}
+		}
+		return max;
+	}
+
+2,4,7,11
+3 = 2*3-2
+4 = 2*4-2
+5 = 2*3+1
+
+11110  1111   11
+11000  1100   00
+10100  0011
+01010  1010
+00110  0101
+00011  0000
+01111  0110
+00000
+10010
+01100
+10001
