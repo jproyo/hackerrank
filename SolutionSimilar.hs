@@ -1,9 +1,9 @@
 import Control.Monad
 
-similarities :: String -> IO Int
+similarities :: String -> Int
 similarities xs
-  | length xs > 100000 = return 0
-  | otherwise = return (sum[similarity x1 y1
+  | length xs > 100000 = 0
+  | otherwise = (sum[similarity x1 y1
                          | (x1, y1) <- [(x,y) | x <- [xs], y <- suffixes xs]])
 
 suffixes :: String -> [String]
@@ -17,6 +17,4 @@ similarity xs ys = similaritySum' xs ys 0
         | otherwise = acc
        similaritySum' _ _ acc = acc
 
-main = do
-  testCases <- getLine
-  replicateM_ (read testCases :: Int) $ getLine >>= similarities >>= print
+main = interact $ unlines . map show . map similarities . tail . words
