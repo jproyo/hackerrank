@@ -1,7 +1,6 @@
 maxDiff :: [Int] -> Int
-maxDiff xs = maximum [ diff |
-       i <- [1..((length xs) - 1)]
-     , let (left, right) = splitAt i xs
-           diff          = abs (maximum left - maximum right) ]
+maxDiff xs = let (leftL, rightL) = splitAt 1 xs
+                 (leftR, rightR) = splitAt (length xs - 1) xs
+                 in max (maximum leftL - maximum rightL) (maximum leftR - maximum leftL)
 
 main = interact $ show . maxDiff . map read . words
