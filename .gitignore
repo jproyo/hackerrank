@@ -1,14 +1,12 @@
-bin/
-.project
-.settings
-.classpath
-*.class
-target/
-classes/
-*.h2.db
+dist
+cabal-dev
+.cabal-sandbox
+cabal.sandbox.config
+*.o
+*.hi
+*.chi
+*.chs.h
+.virthualenv
 
-# Package Files #
-*.jar
-*.war
-*.ear
-Thumbs.db
+*.sw*
+/.stack-work

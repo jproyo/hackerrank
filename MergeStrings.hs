@@ -1,3 +1,5 @@
+module MergeStrings where
+
 mergeStrings :: [Char] -> [Char] -> String
 mergeStrings [] [] = []
 mergeStrings [] b = b
